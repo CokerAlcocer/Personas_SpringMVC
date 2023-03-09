@@ -12,7 +12,11 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public List<Persona> consultarPersonas(){
+        llenarLista();
         return listaPersonas;
+    }
+    public void llenarLista(){
+        listaPersonas.add(new Persona("","","",true,true));
     }
 
     @Override
@@ -29,14 +33,12 @@ public class PersonaServiceImpl implements PersonaService{
     }
     @Override
     public Boolean registrarPersona(Persona persona){
-        Boolean flag;
+        boolean flag = false;
         if (persona.getNombre() == null ||
-                persona.getApellidoP == null ||
-                persona.getApellidoM == null ||
-                persona.getEdad() == null ||
-                persona.getsexo() == null ||
-                persona.getEstadoCivil() == null
-        ){
+                persona.getPaterno == null ||
+                persona.getMaterno == null ||
+                persona.getEdad() == null ){
+
             flag = false;
         }else{
             listaPersonas.add(persona);
