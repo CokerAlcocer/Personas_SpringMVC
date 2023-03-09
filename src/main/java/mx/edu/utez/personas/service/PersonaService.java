@@ -5,9 +5,11 @@ import java.util.List;
 
 public interface PersonaService {
 
-    boolean registerPersonas(Personas  personas);
-
-    List<Personas> listPersonas();
-
+    boolean registrarPersona(Persona  personas);
+    List<Persona> consultarPersonas();
+    BeanPersona consultarPersonasPorId();
+    
+    List<Persona> modificarPersona();
+    List<Persona> eliminarPersona();
 
 }
