@@ -1,0 +1,142 @@
+<!-- Modal de registro -->
+<div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="border-0 modal-content">
+      <div class="card border-0">
+        <div class="card card-header bg-dark text-white"><h3>Registrar persona</h3></div>
+        <div class="card card-body border-0 pt-0">
+          <form id="formRegister">
+            <div class="row">
+              <div class="col-6 g-4">
+                <label for="">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre(s)" class="form-control" required autocomplete="off">
+              </div>
+              <div class="col-6 g-4">
+                <label for="">Apellidos</label>
+                <div class="row">
+                  <div class="col-6"><input type="text" name="paterno" id="paterno" placeholder="Paterno" class="form-control" required autocomplete="off"></div>
+                  <div class="col-6"><input type="text" name="materno" id="materno" placeholder="Materno" class="form-control" required autocomplete="off"></div>
+                </div>
+              </div>
+              <div class="col-4 g-4">
+                <label for="">Edad</label>
+                <input type="number" name="edad" id="edad" placeholder="Edad" class="form-control" required autocomplete="off">
+              </div>
+              <div class="col-4 g-4">
+                <label for="">Género</label>
+                <div class="form-check">
+                  <label for="g1">Hombre</label>
+                  <input type="radio" id="g1" name="genero" class="form-check-input" required>
+                </div>
+                <div class="form-check">
+                  <label for="g2">Mujer</label>
+                  <input type="radio" id="g2" name="genero" class="form-check-input" required>
+                </div>
+              </div>
+              <div class="col-4 g-4">
+                <label>Estado Civil</label>
+                <div class="form-check">
+                  <label for="ec1">Casado</label>
+                  <input type="radio" id="ec1" name="estadoCivil" class="form-check-input" required>
+                </div>
+                <div class="form-check">
+                  <label for="ec2">Soltero</label>
+                  <input type="radio" id="ec2" name="estadoCivil" class="form-check-input" required>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card card-footer text-end">
+          <div>
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-outline-primary" form="formRegister">Registrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de actualización -->
+<div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="border-0 modal-content">
+      <div class="card border-0">
+        <div class="card card-header bg-dark text-white"><h3>Actualizar información</h3></div>
+        <div class="card card-body border-0 pt-0">
+          <form id="formUpdate">
+            <div class="row">
+              <div class="col-6 g-4">
+                <label for="">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre(s)" class="form-control" required autocomplete="off">
+              </div>
+              <div class="col-6 g-4">
+                <label for="">Apellidos</label>
+                <div class="row">
+                  <div class="col-6"><input type="text" name="paterno" id="paterno" placeholder="Paterno" class="form-control" required autocomplete="off"></div>
+                  <div class="col-6"><input type="text" name="materno" id="materno" placeholder="Materno" class="form-control" required autocomplete="off"></div>
+                </div>
+              </div>
+              <div class="col-4 g-4">
+                <label for="">Edad</label>
+                <input type="number" name="edad" id="edad" placeholder="Edad" class="form-control" required autocomplete="off">
+              </div>
+              <div class="col-4 g-4">
+                <label for="">Género</label>
+                <div class="form-check">
+                  <label for="g1">Hombre</label>
+                  <input type="radio" id="g1" name="genero" class="form-check-input" required>
+                </div>
+                <div class="form-check">
+                  <label for="g2">Mujer</label>
+                  <input type="radio" id="g2" name="genero" class="form-check-input" required>
+                </div>
+              </div>
+              <div class="col-4 g-4">
+                <label>Estado Civil</label>
+                <div class="form-check">
+                  <label for="ec1">Casado</label>
+                  <input type="radio" id="ec1" name="estadoCivil" class="form-check-input" required>
+                </div>
+                <div class="form-check">
+                  <label for="ec2">Soltero</label>
+                  <input type="radio" id="ec2" name="estadoCivil" class="form-check-input" required>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card card-footer text-end">
+          <div>
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-outline-primary" form="formUpdate">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de eliminación -->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="border-0 modal-content">
+      <div class="card border-0">
+        <div class="card card-header bg-danger text-white"><h3>Eliminar persona</h3></div>
+        <div class="card card-body border-0 pt-0">
+          <form id="formDelete">
+            <input type="hidden" name="id" id="id">
+            <Strong¿Estás seguro de que quieres eliminar a esta persona?</Strong> Esta acción es irreversible
+          </form>
+        </div>
+        <div class="card card-footer text-end">
+          <div>
+            <button class="btn btn-outline-danger" form="formDelete">Eliminar</button>
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
