@@ -10,12 +10,12 @@ public class PersonaServiceImpl implements PersonaService{
     private List<Persona> listaPersonas = new LinkedList<>();
     private List<Persona> listaPersonasID = new LinkedList<>();
 
-    @Autowired
+    @Override
     public List<Persona> consultarPersonas(){
         return listaPersonas;
     }
 
-    @Autowired
+    @Override
     public Persona consultarPersonaPorId(int id){
         Persona persona = null;
         for (int i = 0; i < listaPersonas.size();i++){
@@ -27,6 +27,7 @@ public class PersonaServiceImpl implements PersonaService{
         }
         return persona;
     }
+    @Override
     public Boolean registrarPersona(Persona persona){
         Boolean flag;
         if (persona.getNombre() == null ||
@@ -43,7 +44,7 @@ public class PersonaServiceImpl implements PersonaService{
         }
         return flag;
     }
-
+    @Override
     public Boolean modificarPersona(Persona persona){
         boolean flag = false;
         Persona person1 = null;
@@ -57,7 +58,7 @@ public class PersonaServiceImpl implements PersonaService{
         }
         return flag;
     }
-
+    @Override
     public Boolean eliminarPersona(int id) {
         boolean flag = false;
         for (int i = 0; i < listaPersonas.size(); i++){
