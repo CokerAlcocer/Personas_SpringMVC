@@ -4,24 +4,23 @@ public class Personas {
 
     private String nombre;
 
-    private String apellidoM;
+    private String paterno;
 
-    private String apellidoP;
+    private String materno;
 
     private int edad;
 
-    private String sexo;
+    private boolean sexo;
 
-    private String estadoCivil;
-
+    private boolean estadoCivil;
 
     public Personas() {
     }
 
-    public Personas(String nombre, String apellidoM, String apellidoP, int edad, String sexo, String estadoCivil) {
+    public Personas(String nombre, String paterno, String materno, int edad, boolean sexo, boolean estadoCivil) {
         this.nombre = nombre;
-        this.apellidoM = apellidoM;
-        this.apellidoP = apellidoP;
+        this.paterno = paterno;
+        this.materno = materno;
         this.edad = edad;
         this.sexo = sexo;
         this.estadoCivil = estadoCivil;
@@ -35,20 +34,20 @@ public class Personas {
         this.nombre = nombre;
     }
 
-    public String getApellidoM() {
-        return apellidoM;
+    public String getPaterno() {
+        return paterno;
     }
 
-    public void setApellidoM(String apellidoM) {
-        this.apellidoM = apellidoM;
+    public void setPaterno(String paterno) {
+        this.paterno = paterno;
     }
 
-    public String getApellidoP() {
-        return apellidoP;
+    public String getMaterno() {
+        return materno;
     }
 
-    public void setApellidoP(String apellidoP) {
-        this.apellidoP = apellidoP;
+    public void setMaterno(String materno) {
+        this.materno = materno;
     }
 
     public int getEdad() {
@@ -59,19 +58,19 @@ public class Personas {
         this.edad = edad;
     }
 
-    public String getSexo() {
+    public boolean isSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(boolean sexo) {
         this.sexo = sexo;
     }
 
-    public String getEstadoCivil() {
+    public boolean isEstadoCivil() {
         return estadoCivil;
     }
 
-    public void setEstadoCivil(String estadoCivil) {
+    public void setEstadoCivil(boolean estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
 }
