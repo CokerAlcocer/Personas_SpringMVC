@@ -1,10 +1,11 @@
 package mx.edu.utez.personas.service;
 
-import org.springframework.beans.factory.annotation.Override;
+import mx.edu.utez.personas.model.Persona;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-
+@Service
 public class PersonaServiceImpl implements PersonaService{
 
     private List<Persona> listaPersonas = new LinkedList<>();
@@ -12,19 +13,15 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public List<Persona> consultarPersonas(){
-        llenarLista();
         return listaPersonas;
-    }
-    public void llenarLista(){
-        listaPersonas.add(new Persona("","","",true,true));
     }
 
     @Override
-    public Persona consultarPersonaPorId(int id){
+    public Persona consultarPersonasPorId(long id){
         Persona persona = null;
         for (int i = 0; i < listaPersonas.size();i++){
             Persona persona1 = listaPersonas.get(0);
-            if(persona1.getIdPersona() == id){
+            if(persona1.getId() == id){
                 persona = persona1;
                 break;
             }
@@ -32,12 +29,12 @@ public class PersonaServiceImpl implements PersonaService{
         return persona;
     }
     @Override
-    public Boolean registrarPersona(Persona persona){
+    public boolean registrarPersona(Persona persona){
         boolean flag = false;
         if (persona.getNombre() == null ||
-                persona.getPaterno == null ||
-                persona.getMaterno == null ||
-                persona.getEdad() == null ){
+                persona.getPaterno() == null ||
+                persona.getMaterno() == null ||
+                persona.getEdad() == 0 ){
 
             flag = false;
         }else{
@@ -47,12 +44,12 @@ public class PersonaServiceImpl implements PersonaService{
         return flag;
     }
     @Override
-    public Boolean modificarPersona(Persona persona){
+    public boolean modificarPersona(Persona persona){
         boolean flag = false;
-        Persona person1 = null;
+        Persona persona1 = null;
         for (int i = 0; i < listaPersonas.size(); i++){
             persona1 = listaPersonas.get(i);
-            if (person1.getIdPersona == persona.getIdPersona()){
+            if (persona1.getId() == persona.getId()){
                 listaPersonas.set(i, persona);
                 flag = true;
                 break;
@@ -61,11 +58,11 @@ public class PersonaServiceImpl implements PersonaService{
         return flag;
     }
     @Override
-    public Boolean eliminarPersona(int id) {
+    public boolean eliminarPersona(long id) {
         boolean flag = false;
         for (int i = 0; i < listaPersonas.size(); i++){
             Persona persona = listaPersonas.get(i);
-            if (persona.idPersona == id){
+            if (persona.getId() == id){
                 listaPersonas.remove(i);
                 flag = true;
                 break;

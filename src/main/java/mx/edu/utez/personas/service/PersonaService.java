@@ -1,15 +1,15 @@
 package mx.edu.utez.personas.service;
-import org.springframework.beans.factory.annotation.Autowired;
+import mx.edu.utez.personas.model.Persona;
 
 import java.util.List;
 
 public interface PersonaService {
 
-    boolean registrarPersona(Persona  personas);
+    boolean registrarPersona(Persona personas);
     List<Persona> consultarPersonas();
-    BeanPersona consultarPersonasPorId();
-    
-    List<Persona> modificarPersona();
-    List<Persona> eliminarPersona();
+    Persona consultarPersonasPorId(long id);
+
+    boolean modificarPersona(Persona persona);
+    boolean eliminarPersona(long id);
 
 }

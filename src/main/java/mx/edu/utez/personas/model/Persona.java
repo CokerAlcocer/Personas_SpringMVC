@@ -1,7 +1,8 @@
 package mx.edu.utez.personas.model;
 
-public class Personas {
+public class Persona {
 
+    private long id;
     private String nombre;
 
     private String paterno;
@@ -14,10 +15,20 @@ public class Personas {
 
     private boolean estadoCivil;
 
-    public Personas() {
+    public Persona() {
     }
 
-    public Personas(String nombre, String paterno, String materno, int edad, boolean sexo, boolean estadoCivil) {
+    public Persona(String nombre, String paterno, String materno, int edad, boolean sexo, boolean estadoCivil) {
+        this.nombre = nombre;
+        this.paterno = paterno;
+        this.materno = materno;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
+    }
+
+    public Persona(long id, String nombre, String paterno, String materno, int edad, boolean sexo, boolean estadoCivil) {
+        this.id = id;
         this.nombre = nombre;
         this.paterno = paterno;
         this.materno = materno;
@@ -72,5 +83,13 @@ public class Personas {
 
     public void setEstadoCivil(boolean estadoCivil) {
         this.estadoCivil = estadoCivil;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

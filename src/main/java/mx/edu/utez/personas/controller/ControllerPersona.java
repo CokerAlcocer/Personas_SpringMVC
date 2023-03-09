@@ -1,6 +1,8 @@
 package mx.edu.utez.personas.controller;
 
 
+import mx.edu.utez.personas.model.Persona;
+import mx.edu.utez.personas.service.PersonaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Controller
 @RequestMapping("/personas")
@@ -15,40 +18,46 @@ public class ControllerPersona {
 
     @Autowired
     private PersonaServiceImpl pservicei;
-    public List<BeanPersona> listaPersonas = new ArrayList<>();
+    public List<Persona> listaPersonas = new ArrayList<>();
     @GetMapping("/listar")
     public String consultarPersonas(Model model){
         listaPersonas = pservicei.consultarPersonas();
         model.addAttribute("listaPersona",listaPersonas);
-        return "crud";
+        return "index";
     }
 
     @GetMapping("/listar/{id}")
     public String consultarPersonasPorId(@PathVariable("id") int idPersona, Model model){
-        BeanPersona uniquePer = pservicei.consultarPersonasPorId(idPersona);
+        Persona uniquePer = pservicei.consultarPersonasPorId(idPersona);
         model.addAttribute("persona",uniquePer);
-        return "crud";
+        return "index";
     }
 
 
     @PostMapping("/registrar")
-    public String registrarPersona(@ModelAttribute("persona") BeanPersona nPersona,Model model){
-        listaPersonas = pservicei.registrarPersona(nPersona);
+    public String registrarPersona(@ModelAttribute("persona") Persona nPersona,Model model){
+        if(pservicei.registrarPersona(nPersona)){
+            listaPersonas = pservicei.consultarPersonas();
+        }
         model.addAttribute("listaPersonas",listaPersonas);
-        return "criud";
+        return "index";
     }
     @PutMapping("/modificar/{id}")
-    public String modificarPersona(@ModelAttribute("persona") BeanPersona uppersona, Model model){
-     listaPersonas = pservicei.modificarPersona(uppersona);
+    public String modificarPersona(@ModelAttribute("persona") Persona uppersona, Model model){
+     if (pservicei.modificarPersona(uppersona)){
+         listaPersonas = pservicei.consultarPersonas();   
+     }
      model.addAttribute("listaPersonas",listaPersonas);
-     return "crud";
+     return "index";
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public String eliminarPersona(@ModelAttribute("persona") BeanPersona dPersona, Model model){
-        listaPersonas = pservicei.eliminarPersona(dPersoa);
+    public String eliminarPersona(@ModelAttribute("persona") Persona dPersona, Model model){
+        if(pservicei.eliminarPersona(dPersona.getId())){
+            listaPersonas = pservicei.consultarPersonas();
+        }
         model.addAttribute("listaPersona",listaPersonas);
-        return "crud";
+        return "index";
     }
 
 }
