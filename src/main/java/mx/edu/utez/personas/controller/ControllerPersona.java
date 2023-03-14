@@ -22,6 +22,7 @@ public class ControllerPersona {
     @GetMapping("/listar")
     public String consultarPersonas(Model model){
         listaPersonas = pservicei.consultarPersonas();
+        model.addAttribute("persona", new Persona());
         model.addAttribute("listaPersona",listaPersonas);
         return "index";
     }
@@ -42,7 +43,7 @@ public class ControllerPersona {
         model.addAttribute("listaPersonas",listaPersonas);
         return "index";
     }
-    @PutMapping("/modificar/{id}")
+    @PostMapping("/modificar")
     public String modificarPersona(@ModelAttribute("persona") Persona uppersona, Model model){
      if (pservicei.modificarPersona(uppersona)){
          listaPersonas = pservicei.consultarPersonas();   
@@ -51,7 +52,7 @@ public class ControllerPersona {
      return "index";
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @PostMapping ("/eliminar")
     public String eliminarPersona(@ModelAttribute("persona") Persona dPersona, Model model){
         if(pservicei.eliminarPersona(dPersona.getId())){
             listaPersonas = pservicei.consultarPersonas();

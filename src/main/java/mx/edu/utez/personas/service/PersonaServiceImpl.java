@@ -38,6 +38,8 @@ public class PersonaServiceImpl implements PersonaService{
 
             flag = false;
         }else{
+            int size = listaPersonas.size();
+            persona.setId(size);
             listaPersonas.add(persona);
             flag = true;
         }

@@ -5,43 +5,43 @@
       <div class="card border-0">
         <div class="card card-header bg-dark text-white"><h3>Registrar persona</h3></div>
         <div class="card card-body border-0 pt-0">
-          <form id="formRegister">
+          <form id="formRegister" method="POST" th:action="@{/personas/registrar}" th:object="${persona}">
             <div class="row">
               <div class="col-6 g-4">
                 <label for="">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre(s)" class="form-control" required autocomplete="off">
+                <input type="text" name="nombre" id="nombreR" placeholder="Nombre(s)" class="form-control" required autocomplete="off">
               </div>
               <div class="col-6 g-4">
                 <label for="">Apellidos</label>
                 <div class="row">
-                  <div class="col-6"><input type="text" name="paterno" id="paterno" placeholder="Paterno" class="form-control" required autocomplete="off"></div>
-                  <div class="col-6"><input type="text" name="materno" id="materno" placeholder="Materno" class="form-control" required autocomplete="off"></div>
+                  <div class="col-6"><input type="text" name="paterno" id="paternoR" placeholder="Paterno" class="form-control" required autocomplete="off"></div>
+                  <div class="col-6"><input type="text" name="materno" id="maternoR" placeholder="Materno" class="form-control" required autocomplete="off"></div>
                 </div>
               </div>
               <div class="col-4 g-4">
                 <label for="">Edad</label>
-                <input type="number" name="edad" id="edad" placeholder="Edad" class="form-control" required autocomplete="off">
+                <input type="number" name="edad" id="edadR" placeholder="Edad" class="form-control" required autocomplete="off">
               </div>
               <div class="col-4 g-4">
                 <label for="">Género</label>
                 <div class="form-check">
                   <label for="g1">Hombre</label>
-                  <input type="radio" id="g1" name="genero" class="form-check-input" required>
+                  <input type="radio" id="generoR" name="genero" class="form-check-input" required>
                 </div>
                 <div class="form-check">
                   <label for="g2">Mujer</label>
-                  <input type="radio" id="g2" name="genero" class="form-check-input" required>
+                  <input type="radio" id="generoR" name="genero" class="form-check-input" required>
                 </div>
               </div>
               <div class="col-4 g-4">
                 <label>Estado Civil</label>
                 <div class="form-check">
                   <label for="ec1">Casado</label>
-                  <input type="radio" id="ec1" name="estadoCivil" class="form-check-input" required>
+                  <input type="radio" id="estadoCivilR" name="estadoCivil" class="form-check-input" required>
                 </div>
                 <div class="form-check">
                   <label for="ec2">Soltero</label>
-                  <input type="radio" id="ec2" name="estadoCivil" class="form-check-input" required>
+                  <input type="radio" id="estadoCivilR" name="estadoCivil" class="form-check-input" required>
                 </div>
               </div>
             </div>
@@ -65,43 +65,106 @@
       <div class="card border-0">
         <div class="card card-header bg-dark text-white"><h3>Actualizar información</h3></div>
         <div class="card card-body border-0 pt-0">
-          <form id="formUpdate">
+          <form id="formUpdate" method="POST" th:action="@{/personas/modificar}" th:object="${persona}">
+            <form id="formRegister" method="POST" th:action="@{/personas/registrar}" th:object="${persona}">
             <div class="row">
               <div class="col-6 g-4">
+                <input type="hidden" name="id" id="idU" th:value="${persona.id}" class="form-control" required autocomplete="off">
                 <label for="">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre(s)" class="form-control" required autocomplete="off">
+                <input type="text" name="nombre" id="nombreU" placeholder="Nombre(s)" th:value="${persona.nombre}" class="form-control" required autocomplete="off">
               </div>
               <div class="col-6 g-4">
                 <label for="">Apellidos</label>
                 <div class="row">
-                  <div class="col-6"><input type="text" name="paterno" id="paterno" placeholder="Paterno" class="form-control" required autocomplete="off"></div>
-                  <div class="col-6"><input type="text" name="materno" id="materno" placeholder="Materno" class="form-control" required autocomplete="off"></div>
+                  <div class="col-6"><input type="text" name="paterno" id="paternoU" placeholder="Paterno" class="form-control" th:value="${persona.paterno}" required autocomplete="off"></div>
+                  <div class="col-6"><input type="text" name="materno" id="maternoU" placeholder="Materno" class="form-control" th:value="${persona.materno}" required autocomplete="off"></div>
                 </div>
               </div>
               <div class="col-4 g-4">
                 <label for="">Edad</label>
-                <input type="number" name="edad" id="edad" placeholder="Edad" class="form-control" required autocomplete="off">
+                <input type="number" name="edad" id="edadU" th:value="${persona.edad}" placeholder="Edad" class="form-control" required autocomplete="off">
               </div>
               <div class="col-4 g-4">
                 <label for="">Género</label>
                 <div class="form-check">
                   <label for="g1">Hombre</label>
-                  <input type="radio" id="g1" name="genero" class="form-check-input" required>
+                  <input type="radio" id="generoU" name="genero"  th:checked="${persona.sexo} == true" class="form-check-input" required>
                 </div>
                 <div class="form-check">
                   <label for="g2">Mujer</label>
-                  <input type="radio" id="g2" name="genero" class="form-check-input" required>
+                  <input type="radio" id="generoU" name="genero"  th:checked="${persona.sexo} == false" class="form-check-input" required>
                 </div>
               </div>
               <div class="col-4 g-4">
                 <label>Estado Civil</label>
                 <div class="form-check">
                   <label for="ec1">Casado</label>
-                  <input type="radio" id="ec1" name="estadoCivil" class="form-check-input" required>
+                  <input type="radio" id="estadoCivilU" name="estadoCivil" th:checked="${persona.estadoCivil} == true" class="form-check-input" required>
                 </div>
                 <div class="form-check">
                   <label for="ec2">Soltero</label>
-                  <input type="radio" id="ec2" name="estadoCivil" class="form-check-input" required>
+                  <input type="radio" id="estadoCivilU" name="estadoCivil" th:checked="${persona.estadoCivil} == false" class="form-check-input" required>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card card-footer text-end">
+          <div>
+<!--            form="formUpdate"-->
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-outline-primary" form="formUpdate">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="border-0 modal-content">
+      <div class="card border-0">
+        <div class="card card-header bg-dark text-white"><h3>Información persona</h3></div>
+        <div class="card card-body border-0 pt-0">
+          <form id="formDetail" method="POST" th:action="@{/personas/registrar}" th:object="${persona}">
+            <div class="row">
+              <div class="col-6 g-4">
+                <label for="">Nombre</label>
+                <input type="text" name="nombre" id="nombreD" placeholder="Nombre(s)" th:value="${persona.nombre}" class="form-control" required autocomplete="off" disabled>
+              </div>
+              <div class="col-6 g-4">
+                <label for="">Apellidos</label>
+                <div class="row">
+                  <div class="col-6"><input type="textD" name="paterno" id="paterno" th:value="${persona.paterno}" placeholder="Paterno" class="form-control" required autocomplete="off" disabled></div>
+                  <div class="col-6"><input type="textD" name="materno" id="materno" th:value="${persona.materno}" placeholder="Materno" class="form-control" required autocomplete="off" disabled></div>
+                </div>
+              </div>
+              <div class="col-4 g-4">
+                <label for="">Edad</label>
+                <input type="number" name="edad" id="edadD" placeholder="Edad" th:value="${persona.edad}" class="form-control" required autocomplete="off" disabled>
+              </div>
+              <div class="col-4 g-4">
+                <label for="">Género</label>
+                <div class="form-check">
+                  <label for="g1">Hombre</label>
+                  <input type="radio" id="generoD" name="genero" class="form-check-input" th:checked="${persona.sexo} == true" required disabled>
+                </div>
+                <div class="form-check">
+                  <label for="g2">Mujer</label>
+                  <input type="radio" id="generoD" name="genero" class="form-check-input" th:checked="${persona.sexo} == false" required disabled>
+                </div>
+              </div>
+              <div class="col-4 g-4">
+                <label>Estado Civil</label>
+                <div class="form-check">
+                  <label for="ec1">Casado</label>
+                  <input type="radio" id="estadoCivilD" name="estadoCivil" th:checked="${persona.estadoCivil} == true" class="form-check-input" required disabled>
+                </div>
+                <div class="form-check">
+                  <label for="ec2">Soltero</label>
+                  <input type="radio" id="estadoCivilD" name="estadoCivil" th:checked="${persona.estadoCivil} == false" class="form-check-input" required disabled>
                 </div>
               </div>
             </div>
@@ -110,7 +173,6 @@
         <div class="card card-footer text-end">
           <div>
             <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button class="btn btn-outline-primary" form="formUpdate">Actualizar</button>
           </div>
         </div>
       </div>
@@ -125,9 +187,10 @@
       <div class="card border-0">
         <div class="card card-header bg-danger text-white"><h3>Eliminar persona</h3></div>
         <div class="card card-body border-0 pt-0">
-          <form id="formDelete">
-            <input type="hidden" name="id" id="id">
-            <Strong¿Estás seguro de que quieres eliminar a esta persona?</Strong> Esta acción es irreversible
+          <form id="formDelete" method="POST" th:action="@{/personas/eliminar}" th:object="${persona}">
+            <input type="hidden" name="id" id="id" th:value="${persona.id}">
+            <strong>Persona: </strong> <p th:text="${persona.nombre + ' ' + persona.paterno + ' ' + persona.materno}"></p>
+            <Strong>¿Estás seguro de que quieres eliminar a esta persona?</Strong> <br>Esta acción es irreversible
           </form>
         </div>
         <div class="card card-footer text-end">
