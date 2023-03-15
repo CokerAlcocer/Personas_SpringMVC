@@ -23,7 +23,7 @@ public class ControllerPersona {
     public String consultarPersonas(Model model){
         listaPersonas = pservicei.consultarPersonas();
         model.addAttribute("persona", new Persona());
-        model.addAttribute("listaPersona",listaPersonas);
+        model.addAttribute("listaPersonas",listaPersonas);
         return "index";
     }
 
@@ -57,7 +57,7 @@ public class ControllerPersona {
         if(pservicei.eliminarPersona(dPersona.getId())){
             listaPersonas = pservicei.consultarPersonas();
         }
-        model.addAttribute("listaPersona",listaPersonas);
+        model.addAttribute("listaPersonas",listaPersonas);
         return "index";
     }
 
